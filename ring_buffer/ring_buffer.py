@@ -5,7 +5,11 @@ class RingBuffer:
     self.storage = [None]*capacity
 
   def append(self, item):
-    pass
+    #append an element by overwriting the old one.
+    self.storage[self.current] = item
+    self.current = (self.current + 1) % self.capacity
 
   def get(self):
-    pass
+    #return a list of elements from the oldest to the newest
+    ring = [x for x in self.storage if x is not None]
+    return ring
